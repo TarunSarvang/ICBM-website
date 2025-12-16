@@ -1,0 +1,107 @@
+/* Global Styles & Variables from index.css */
+:root {
+    /* Professional Academic Blue & Green Theme */
+    --background: 210 20% 98%; /* Very light cool gray */
+    --foreground: 222 47% 11%; /* Deep navy almost black */
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    /* DTU Inspired Deep Blue */
+    --primary: 215 100% 30%; /* Strong Corporate Blue */
+    --primary-foreground: 210 40% 98%;
+
+    /* Sustainability Green */
+    --secondary: 150 60% 90%; /* Light Green Background */
+    --secondary-foreground: 150 80% 20%; /* Dark Green Text */
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    /* Innovation Accent (Amber/Gold) */
+    --accent: 45 90% 50%;
+    --accent-foreground: 222 47% 11%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 215 100% 30%;
+
+    --radius: 0.5rem;
+
+    --font-heading: "Plus Jakarta Sans", sans-serif;
+    --font-sans: "Inter", sans-serif;
+    --font-serif: "Playfair Display", serif;
+}
+
+body {
+    font-family: var(--font-sans);
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    margin: 0;
+    line-height: 1.5;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    letter-spacing: -0.025em;
+}
+
+/* Custom Utilities mimicking Tailwind config */
+.font-heading { font-family: var(--font-heading); }
+.font-serif { font-family: var(--font-serif); }
+
+/* Animation Utility needed for "fade-in-up" if we don't use a library */
+.fade-in-up {
+    animation: fadeInUp 0.8s ease-out forwards;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Modal styles (since we don't have Radix primitives) */
+.dialog-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 50;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(4px);
+}
+.dialog-overlay.open {
+    display: flex;
+}
+.dialog-content {
+    background: hsl(var(--card));
+    color: hsl(var(--card-foreground));
+    padding: 1.5rem;
+    border-radius: var(--radius);
+    max-width: 42rem;
+    width: 90%;
+    max-height: 85vh;
+    overflow-y: auto;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    position: relative;
+    animation: scaleIn 0.2s ease-out;
+}
+
+@keyframes scaleIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* Tailwind customization for HSL variables */
+/* Note: We will configure tailwind.config object in index.html to read these CSS variables */
